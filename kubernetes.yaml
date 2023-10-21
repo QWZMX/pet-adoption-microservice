@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pet-adoption-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pet-adoption
+  template:
+    metadata:
+      labels:
+        app: pet-adoption
+    spec:
+      containers:
+      - name: pet-adoption
+        image: yuhanxia99/pet-adoption
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8011
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: pet-adoption-service
+spec:
+  selector:
+    app: pet-adoption
+  ports:
+  - port: 8011
+    targetPort: 8011
+  type: LoadBalancer

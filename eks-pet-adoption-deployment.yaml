@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eks-pet-adoption-linux-deployment
+  namespace: eks-pet-adoption
+  labels:
+    app: eks-pet-adoption-linux-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: eks-pet-adoption-linux-app
+  template:
+    metadata:
+      labels:
+        app: eks-pet-adoption-linux-app
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/arch
+                operator: In
+                values:
+                - amd64
+      containers:
+      - name: pet-adoption
+        image: yuhanxia99/pet-adoption
+        ports:
+        - name: http
+          containerPort: 8011
+        imagePullPolicy: Always
+      nodeSelector:
+        kubernetes.io/os: linux
