@@ -1,5 +1,5 @@
 from resources.abstract_base_resource import BaseResource
-from resources.adoptions.adoption_models import AdoptionRspModel, AdoptionModel
+from resources.adoptions.adoption_models import AdoptionRspModel
 from resources.rest_models import Link
 from typing import List
 

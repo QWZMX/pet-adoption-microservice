@@ -7,7 +7,7 @@ from typing import List
 import uvicorn
 from resources.adoptions.adoptions_resource import AdoptionsResource
 from resources.adoptions.adoptions_data_service import AdoptionsDataService
-from resources.adoptions.adoption_models import AdoptionModel, AdoptionRspModel
+from resources.adoptions.adoption_models import AdoptionCreate, AdoptionUpdate, AdoptionRspModel
 
 app = FastAPI()
 app.add_middleware(
@@ -57,12 +57,12 @@ async def get_adoption_by_id(adoptionId: str):
     return adoption
 
 @app.post("/adoptions", response_model=AdoptionRspModel)
-async def create_adoption(adoption: AdoptionModel):
+async def create_adoption(adoption: AdoptionCreate):
     """Create a new adoption request."""
     return adoptions_resource.create_adoption(adoption.model_dump())
 
 @app.put("/adoptions/{adoptionId}", response_model=AdoptionRspModel)
-async def update_adoption_status(adoptionId: str, updated_data: AdoptionModel):
+async def update_adoption_status(adoptionId: str, updated_data: AdoptionUpdate):
     """Shelter updates adoption status."""
     updated_adoption = adoptions_resource.update_adoption_status(adoptionId, updated_data)
     if not updated_adoption:

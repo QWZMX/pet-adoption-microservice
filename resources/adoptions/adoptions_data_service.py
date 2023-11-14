@@ -1,5 +1,6 @@
 from resources.abstract_base_data_service import BaseDataService
 import json
+from datetime import datetime
 
 class AdoptionsDataService(BaseDataService):
 
@@ -39,13 +40,14 @@ class AdoptionsDataService(BaseDataService):
         return result
 
     def create_adoption(self, data: dict) -> dict:
+        current_time = datetime.now().isoformat()
         new_adoption = {
             "adoptionId": f"aid_{len(self.adoptions) + 1}",  # Just a simple auto-increment for example
             "petId": data["petId"],
             "adopterId": data["adopterId"],
             "status": "pending",
-            "createdAt": "2023-10-18",  # This should be dynamic, based on current date
-            "updatedAt": "2023-10-18"   # This should be dynamic, based on current date
+            "createdAt": current_time,
+            "updatedAt": current_time
         }
 
         self.adoptions.append(new_adoption)
@@ -63,11 +65,13 @@ class AdoptionsDataService(BaseDataService):
         for adoption in self.adoptions:
             if adoption["adoptionId"] == adoptionId:
                 # This should be dynamic, based on current date
-                adoption["updatedAt"] = "2023-10-18"
+                current_time = datetime.now().isoformat()
+                adoption["updatedAt"] = current_time
                 
                 # Only allowing status update for now. You can expand this to update other fields as needed.
-                if "status" in data:
-                    adoption["status"] = data["status"]
+                # if "status" in data:
+                print(data)
+                adoption["status"] = data.status
                 
                 self._save()
                 return adoption
