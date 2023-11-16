@@ -12,7 +12,7 @@ from resources.adoptions.adoptions_data_service import AdoptionsDataService
 from resources.adoptions.adoption_models import AdoptionCreate, AdoptionUpdate, AdoptionRspModel
 
 import boto3
-from botocore.exceptions import NoCredentialsError
+
 
 app = FastAPI()
 app.add_middleware(
@@ -147,20 +147,6 @@ async def delete_adoption(adoption_id: str, adopter_email: str = None, shelter_e
 
     return {"status": "Adoption deleted successfully"}
 
-
-def send_email(to_addresses, subject, body):
-    try:
-        response = ses_client.send_email(
-            Source='pet-adoption-6156@gmail.com',
-            Destination={'ToAddresses': to_addresses},
-            Message={
-                'Subject': {'Data': subject},
-                'Body': {'Html': {'Data': body}}
-            }
-        )
-        return response
-    except NoCredentialsError:
-        raise HTTPException(status_code=500, detail="Email credentials not available")
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8011)
