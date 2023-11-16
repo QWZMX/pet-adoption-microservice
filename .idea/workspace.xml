@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="efb4cb5b-2d52-47d3-be1c-5baef3aa0d9f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/pet-adoption_microservice.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pet-adoption_microservice.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/adoptions.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/adoptions.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/adoptions/adoption_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/adoptions/adoption_models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/adoptions/adoptions_data_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/adoptions/adoptions_data_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/adoptions/adoptions_resource.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/adoptions/adoptions_resource.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
