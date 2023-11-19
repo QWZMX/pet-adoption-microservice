@@ -1,6 +1,6 @@
 # e6156-pet-adoption
 pet adoption microservice
-## Set up SNS
+## Set up SNS & Lambda
 [Pre-req : IAM](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html)
 [Official Guide](https://docs.aws.amazon.com/sns/latest/dg/sns-getting-started.html)
 - Set up SES
@@ -13,12 +13,18 @@ pet adoption microservice
 - Set up SNS
   - Create topic
   - Create Subscription to the topic from lamda
-## Set up lambda
 
 ## Deploy on ECS
 [Official Guide](https://docs.aws.amazon.com/AmazonECS/latest/userguide/create-container-image.html)
-### Creating a container image
-### Using Linux containers on AWS fargate
+- Creating a container image
+```shell
+# build important: ec2 is amd64 while apple silicon is arm64
+docker build --no-cache --platform linux/amd64 -t yuhanxia99/pet-adoption .  
+# launch container using image
+docker run -e AWS_ACCESS_KEY_ID=[xxx] -e AWS_SECRET_ACCESS_KEY=[xxx] -p 80:80 yuhanxia99/pet-adoption
+```
+  
+- Using Linux containers on AWS fargate
 
 
 
@@ -30,7 +36,7 @@ notice: should manage cost
 # build important: ec2 is amd64 while apple silicon is arm64
 docker build --no-cache --platform linux/amd64 -t yuhanxia99/pet-adoption .  
 # launch container using image
-docker run -p 8011:8011 yuhanxia99/pet-adoption
+docker run -p 80:80 yuhanxia99/pet-adoption
 # push
 docker push yuhanxia99/pet-adoption
 ```
@@ -73,7 +79,7 @@ kubectl delete deployments --all -n eks-pet-adoption
 # run a shell on the pod
 kubectl exec -it eks-pet-adoption-linux-deployment-cb875c4c9-jcvzp -n eks-pet-adoption -- /bin/bash
 # view output from server
-curl -v eks-pet-adoption-linux-service:8011
+curl -v eks-pet-adoption-linux-service:80
 # view the DNS server for the Pod
 cat /etc/resolv.conf
 # exit

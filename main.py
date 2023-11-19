@@ -150,4 +150,4 @@ async def delete_adoption(adoption_id: str, adopter_email: str = None, shelter_e
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8011)
+    uvicorn.run(app, host="0.0.0.0", port=80)
