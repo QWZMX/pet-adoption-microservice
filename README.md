@@ -15,18 +15,24 @@ pet adoption microservice
   - Create Subscription to the topic from lamda
 
 ## Deploy on ECS
-[Official Guide](https://docs.aws.amazon.com/AmazonECS/latest/userguide/create-container-image.html)
-- Creating a container image
+[create container](https://docs.aws.amazon.com/AmazonECS/latest/userguide/create-container-image.html)
+- Creating a container image, should include env in docker file
 ```shell
 # build important: ec2 is amd64 while apple silicon is arm64
+# important: should include aws credentials when building!!
 docker build --no-cache --platform linux/amd64 -t yuhanxia99/pet-adoption .  
 # launch container using image
-docker run -e AWS_ACCESS_KEY_ID=[xxx] -e AWS_SECRET_ACCESS_KEY=[xxx] -p 80:80 yuhanxia99/pet-adoption
+docker run --platform linux/amd64 -p 80:80 yuhanxia99/pet-adoption
+# push to dockerhub
+docker push yuhanxia99/pet-adoption
 ```
-  
+[deploy](https://docs.aws.amazon.com/AmazonECS/latest/userguide/getting-started-fargate.html)
 - Using Linux containers on AWS fargate
-
-
+- HTTP, port 80, TCP
+```shell
+# update
+aws ecs update-service --cluster pet-adoption-docker --service pa --force-new-deployment
+```
 
 --------------
 ## Deploy on EKS
@@ -91,7 +97,7 @@ exit
 # DNS name
 kubectl -n eks-pet-adoption get service eks-pet-adoption-linux-service -o=jsonpath='{.status.loadBalancer.ingress[0].hostname}'
 # public
-http://a0732709d25f74bb59285846f2d9d406-1427569571.us-east-2.elb.amazonaws.com:8011
+http://a0732709d25f74bb59285846f2d9d406-1427569571.us-east-2.elb.amazonaws.com:80
 ```
 
 ### Stop

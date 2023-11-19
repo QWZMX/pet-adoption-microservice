@@ -20,7 +20,7 @@ def lambda_handler(event, context):
 
         # Now, use the extracted data to send an email
         try:
-            email_subject = f"{data['pet_name']} Adoption Event: {action}"
+            email_subject = f"{data['pet_name']}'s Adoption Event: {action}"
             email_body = f"""
             <p>Adoption ID: {data['adoption_id']}</p>
             <p>Details: {data['adopter_email']}'s adoption request to {data['pet_name']} from {data['shelter_email']} has changed to {data['status']} status</p>

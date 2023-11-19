@@ -1,6 +1,9 @@
 #It instructs Docker Engine to use official python:3.9 as the base image
 FROM python:3.9
 
+ENV AWS_ACCESS_KEY_ID=xxx
+
+ENV AWS_SECRET_ACCESS_KEY=xxx
 #It creates a working directory(app) for the Docker image and container
 WORKDIR /app
 
@@ -13,7 +16,7 @@ RUN pip install -r requirements.txt
 #It will copy the remaining files and the source code from the host `fast-api` folder to the `app` container working directory
 COPY . .
 
-#It will expose the FastAPI application on port `8000` inside the container
+#It will expose the FastAPI application on port `80` inside the container
 EXPOSE 80
 
 #It is the command that will start and run the FastAPI application container
