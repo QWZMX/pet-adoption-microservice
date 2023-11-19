@@ -1,0 +1,9 @@
+{
+  "Records": [
+    {
+      "Sns": {
+        "Message": "{\"action\": \"CREATE\", \"data\": {\"adoption_id\": \"aid_1\", \"adopter_email\": \"rikakoovo@gmail.com\", \"shelter_email\": \"xinyeerisa@gmail.com\", \"status\": \"pending\", \"pet_name\": \"akaashi\"}}"
+      }
+    }
+  ]
+}

@@ -1,6 +1,30 @@
 # e6156-pet-adoption
 pet adoption microservice
+## Set up SNS
+[Pre-req : IAM](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html)
+[Official Guide](https://docs.aws.amazon.com/sns/latest/dg/sns-getting-started.html)
+- Set up SES
+  - add email address and sending domain
+  - sandbox -> verify email
+  - upgrade
+- Sut up Lambda
+  - lamda_handler function
+  - grant permission to ses: IAM role -> full ses access
+- Set up SNS
+  - Create topic
+  - Create Subscription to the topic from lamda
+## Set up lambda
 
+## Deploy on ECS
+[Official Guide](https://docs.aws.amazon.com/AmazonECS/latest/userguide/create-container-image.html)
+### Creating a container image
+### Using Linux containers on AWS fargate
+
+
+
+--------------
+## Deploy on EKS
+notice: should manage cost
 ### Dockerization
 ```shell
 # build important: ec2 is amd64 while apple silicon is arm64

@@ -28,7 +28,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 # ses
 sns_client = boto3.client('sns', region_name='us-east-2')
 # sns
-topic_arn = ''  # replace
+topic_arn = 'arn:aws:sns:us-east-2:392034398817:pet-adoption-email'
 
 
 def publish_sns_message(action, data):
@@ -139,7 +139,8 @@ async def delete_adoption(adoption_id: str, adopter_email: str = None, shelter_e
             'adoption_id': adoption_id,
             'adopter_email': adopter_email,
             'shelter_email': shelter_email,
-            'pet_name': pet_name
+            'pet_name': pet_name,
+            'status': "deleted"
         }
         publish_sns_message('DELETE', delete_data)
     except Exception as e:
