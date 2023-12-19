@@ -3,3 +3,6 @@ fastapi
 pydantic
 typing
 boto3
+graphene
+starlette-graphene3
+websockets

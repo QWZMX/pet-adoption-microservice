@@ -11,6 +11,10 @@ from resources.adoptions.adoptions_resource import AdoptionsResource
 from resources.adoptions.adoptions_data_service import AdoptionsDataService
 from resources.adoptions.adoption_models import AdoptionCreate, AdoptionUpdate, AdoptionRspModel
 
+from starlette_graphene3 import GraphQLApp, make_graphiql_handler
+import graphene
+from resources.adoptions.graphql_schema import AdoptionType
+
 import boto3
 
 
@@ -23,7 +27,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
+# app.mount("/static", StaticFiles(directory="static"), name="static")
+
 
 # ses
 sns_client = boto3.client('sns', region_name='us-east-2')
@@ -66,9 +71,28 @@ def get_adoption_resource():
 adoptions_resource = get_adoption_resource()
 
 
-@app.get("/")
-async def root():
-    return RedirectResponse("/static/index.html")
+class Query(graphene.ObjectType):
+    adoptions = graphene.List(AdoptionType, adoptionId=graphene.String())
+
+    def resolve_adoptions(self, info, **kwargs):
+        adoptionId = kwargs.get('adoptionId')
+        if not adoptionId:
+            adoptions = adoptions_resource.get_adoptions()
+        else:
+            adoptions = adoptions_resource.get_adoption_by_id(adoptionId)
+            if adoptions is not None:
+                adoptions = [adoptions]  # Wrap in list if necessary
+        return [AdoptionType.resolve_from_model(adoption) for adoption in adoptions]
+
+
+# graphql
+schema = graphene.Schema(query=Query)
+app.add_route("/graphql", GraphQLApp(schema=schema))
+app.mount("/", GraphQLApp(schema, on_get=make_graphiql_handler()))  # Graphiql IDE
+
+# @app.get("/")
+# async def root():
+#     return RedirectResponse("/static/index.html")
 
 
 @app.get("/adoptions", response_model=List[AdoptionRspModel])
