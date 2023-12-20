@@ -5,10 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="efb4cb5b-2d52-47d3-be1c-5baef3aa0d9f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/adoptions/graphql_schema.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/pet-adoption_microservice.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/adoptions.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eks-pet-adoption-deployment.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eks-pet-adoption-service.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/kubernetes.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lamda_handler.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lamda_test.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/abstract_base_data_service.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/abstract_base_resource.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/adoptions/adoption_models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/adoptions/adoptions_data_service.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/adoptions/adoptions_resource.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/adoptions/graphql_schema.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/rest_models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/index.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

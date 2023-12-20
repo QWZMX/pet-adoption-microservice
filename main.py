@@ -27,7 +27,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 # ses
@@ -87,12 +87,12 @@ class Query(graphene.ObjectType):
 
 # graphql
 schema = graphene.Schema(query=Query)
-app.add_route("/graphql", GraphQLApp(schema=schema))
-app.mount("/", GraphQLApp(schema, on_get=make_graphiql_handler()))  # Graphiql IDE
+app.add_route("/graphql", GraphQLApp(schema=schema, on_get=make_graphiql_handler()))
+# app.mount("/", GraphQLApp(schema, ))  # Graphiql IDE
 
-# @app.get("/")
-# async def root():
-#     return RedirectResponse("/static/index.html")
+@app.get("/")
+async def root():
+    return RedirectResponse("/static/index.html")
 
 
 @app.get("/adoptions", response_model=List[AdoptionRspModel])
